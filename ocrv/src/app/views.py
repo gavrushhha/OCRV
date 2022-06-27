@@ -1,3 +1,7 @@
 from django.shortcuts import render
+# from .models import Routes
+# from rest_framework import generics
 
-# Create your views here.
+
+# class RoutesList(generics.ListCreateAPIView):
+#     queryset = Routes.objects.all()
