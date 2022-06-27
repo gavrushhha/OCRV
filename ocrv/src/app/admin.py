@@ -18,10 +18,10 @@ class Goods_and_servicesAdmin(admin.ModelAdmin):
 class PassengersAdmin(admin.ModelAdmin):
     pass
 
-# @admin.register(Purch_tickets)
-# class Purch_ticketsAdmin(admin.ModelAdmin):
-#     pass
+@admin.register(Purch_tickets)
+class Purch_ticketsAdmin(admin.ModelAdmin):
+    pass
 
-# @admin.register(Purch_goods_services)
-# class Purch_goods_servicesAdmin(admin.ModelAdmin):
-#     pass
+@admin.register(Purch_goods_services)
+class Purch_goods_servicesAdmin(admin.ModelAdmin):
+    pass
