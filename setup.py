@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="ocrv",
+    name="ticketinfo",
     author="OCRV2.0",
     description="Train Delay Investigation",
     # keywords="GNN",
@@ -23,11 +23,11 @@ setuptools.setup(
         "Programming Language :: Python :: 3.8",
     ],
     python_requires=">=3.8",
-
     install_requires=[
         "Django==2.2.12",
-        "django_debug_toolbar==3.2.4"
-        ],
+        "django_debug_toolbar==3.2.4",
+        "mysqlclient",
+    ],
     extras_require={
         "dev": [
             "mypy",
