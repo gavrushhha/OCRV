@@ -26,7 +26,7 @@ setuptools.setup(
     install_requires=[
         "Django==2.2.12",
         "django_debug_toolbar==3.2.4",
-        "mysqlclient",
+        # "mysqlclient",
     ],
     extras_require={
         "dev": [

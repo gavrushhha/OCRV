@@ -13,8 +13,10 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 import os
 import dotenv
 from pathlib import Path
+from pathlib import Path
 
 dotenv.load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-90g551pf7t4@&*2@7ip6+v@84fn%as31q0a%63m$l^p_vmv^^7"
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -79,14 +81,14 @@ WSGI_APPLICATION = "ticketinfo.ocrv.wsgi.application"
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": , #ENTER SMTH
-        "NAME": , #ENTER SMTH
-        "USER": , #ENTER SMTH
-        "PASSWORD": , #ENTER SMTH
-        "HOST": , #ENTER SMTH
-        "PORT": , #ENTER SMTH
-    }
+ 'default': {
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': os.environ.get('DB_NAME'),
+    'USER': os.environ.get('DB_USER'),
+    'PASSWORD': os.environ.get('DB_PASSWORD'),
+    'HOST': os.environ.get('DB_HOST', '127.0.0.1'),
+    'PORT': os.environ.get('PORT'),
+ }
 }
 
 
