@@ -16,9 +16,6 @@ class Routes(Id):
     route_time = models.IntegerField(_("route_time"), blank=True)
     end = models.CharField(_("end"), max_length=255)
 
-    price = models.FloatField(_("price"), blank=True)
-    dates_purchase = models.DateTimeField()
-
     def __str__(self):
         return self.start + " - " + self.end
 
@@ -31,7 +28,6 @@ class Routes(Id):
 
 class Trains(Id):
     num_trains = models.CharField(_("num_trains"), max_length=255)
-    route_time = models.IntegerField(_("route_time"), blank=True)
     time_departure = models.IntegerField(_("time_departure"), blank=True)
     time_arrival = models.IntegerField(_("time_arrival"), blank=True)
     plaz_count = models.IntegerField(_("plaz_count"), blank=True)

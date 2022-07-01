@@ -1,5 +1,5 @@
 from django.contrib import admin
-from ticketinfo.app.models import (
+from .models import (
     Routes,
     Trains,
     Goods_and_services,
