@@ -1,0 +1,34 @@
+{% extends "./base.html" %}
+
+{% block content %}
+
+<div style="margin-top: 50px;">
+    <center><h2> My Profile </h2></center>
+
+    <table class="table table-striped" style="width: 90%;margin-left:75px ;margin-top: 30px;">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Возраст</th>
+                <th scope="col">Пол</th>
+                <th scope="col">Семейное положение</th>
+                <th scope="col">Образование</th>
+                <th scope="col">Дети</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for i in info%}
+
+            <tr>
+                <td>{{i.age}}</td>
+                <td>{{i.sex}}</td>
+                <td>{{i.marit_status}}</td>
+                <td>{{i.education}}</td>
+                <td>{{i.childs}}</td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
