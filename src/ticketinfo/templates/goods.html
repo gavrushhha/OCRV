@@ -1,0 +1,162 @@
+{% extends './base.html' %}
+{% block content %}
+
+<div class="container" style="display: flex;align-items: center;justify-content: center;margin-top: 50px;">
+    <div class='jumbotron' style='width: 100%; '>
+
+        <center>
+            <div style="margin-bottom: 10px;">
+                <h2>Товары и услуги</h2>
+            </div>
+        </center>
+
+        <left>
+            <div style="margin-bottom: 20px;">
+                <h4>Возрастная классификация товаров/услуг</h4>
+            </div>
+        </left>
+
+        <form method='POST' action='http://127.0.0.1:8000/viewGoods/'>
+            {% csrf_token %}
+
+            <div class="row row-no-gutters">
+                <label class='form-label col-sm-2' for="name">от 0 до 5 лет</label>
+                <div class='col-sm-1'>
+
+                    <input type="checkbox" class="defaultCheckbox" value=1 id="age_0_5" name="age_0_5">
+
+                </div>
+            </div>
+
+            <div class="row row-no-gutters">
+                <label class='form-label col-sm-2' for="name">от 6 до 10 лет</label>
+                <div class='col-sm-1'>
+
+                    <input type="checkbox" class="defaultCheckbox" value=1 id="age_6_10" name="age_6_10">
+
+                </div>
+            </div>
+
+            <div class="row row-no-gutters">
+                <label class='form-label col-sm-2' for="name">от 11 до 17 лет</label>
+                <div class='col-sm-1'>
+
+                    <input type="checkbox" class="defaultCheckbox" value=1 id="age_11_17" name="age_11_17">
+
+                </div>
+            </div>
+
+            <div class="row row-no-gutters">
+                <label class='form-label col-sm-2' for="name">от 18 до 55 лет</label>
+                <div class='col-sm-1'>
+
+                    <input type="checkbox" class="defaultCheckbox" value=1 id="age_18_55" name="age_18_55">
+
+                </div>
+            </div>
+
+            <div class="row row-no-gutters">
+                <label class='form-label col-sm-2' for="name">от 56 до 90 лет</label>
+                <div class='col-sm-1'>
+
+                    <input type="checkbox" class="defaultCheckbox" value=1 id="age_56_90" name="age_56_90">
+
+                </div>
+            </div>
+
+            <left>
+                <div style="margin-bottom: 30px;">
+                    <h4>Тип</h4>
+                </div>
+            </left>
+
+            <div class="row row-no-gutters">
+                <label class='form-label col-sm-2' for="name">Товар</label>
+                <div class='col-sm-1'>
+
+                    <input type="checkbox" class="defaultCheckbox" value=1 id="type_service" name="type_service">
+
+                </div>
+            </div>
+
+            <div class="row row-no-gutters">
+                <label class='form-label col-sm-2' for="name">Услуга</label>
+                <div class='col-sm-1'>
+
+                    <input type="checkbox" class="defaultCheckbox" value=1 id="type_service" name="type_service">
+
+                </div>
+            </div>
+
+            <left>
+                <div style="margin-bottom: 30px;">
+                    <h4>Назначение</h4>
+                </div>
+            </left>
+
+            <div class="row row-no-gutters">
+                <label class='form-label col-sm-2' for="name">Товар для гигены</label>
+                <div class='col-sm-1'>
+
+                    <input type="checkbox" class="defaultCheckbox" value=1 id="hygiene" name="hygiene">
+
+                </div>
+            </div>
+
+            <div class="row row-no-gutters">
+                <label class='form-label col-sm-2' for="name">Дорожные приборы</label>
+                <div class='col-sm-1'>
+
+                    <input type="checkbox" class="defaultCheckbox" value=1 id="road_equipment" name="road_equipment">
+
+                </div>
+            </div>
+
+            <div class="row row-no-gutters">
+                <label class='form-label col-sm-2' for="name">Товар для отдыха</label>
+                <div class='col-sm-1'>
+
+                    <input type="checkbox" class="defaultCheckbox" value=1 id="relax" name="relax">
+
+                </div>
+            </div>
+
+            <div class="row row-no-gutters">
+                <label class='form-label col-sm-2' for="name">Продукты питания</label>
+                <div class='col-sm-1'>
+
+                    <input type="checkbox" class="defaultCheckbox" value=1 id="food" name="food">
+
+                </div>
+            </div>
+
+            <left>
+                <div style="margin-bottom: 30px;">
+                    <h4>Доступность</h4>
+                </div>
+            </left>
+
+            <div class="row row-no-gutters">
+                <label class='form-label col-sm-2' for="name">Купе</label>
+                <div class='col-sm-1'>
+
+                    <input type="checkbox" class="defaultCheckbox" value=1 id="couple" name="couple">
+
+                </div>
+            </div>
+
+            <div class="row row-no-gutters">
+                <label class='form-label col-sm-2' for="name">Плацкарт</label>
+                <div class='col-sm-1'>
+
+                    <input type="checkbox" class="defaultCheckbox" value=1 id="plaz" name="plaz">
+
+                </div>
+            </div>
+
+            <center><input type="submit" class="btn btn-success" value='Найти'></center>
+
+        </form>
+    </div>
+</div>
+{% endblock %}
