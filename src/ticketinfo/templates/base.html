@@ -36,15 +36,16 @@
                 <a class="nav-link" href="http://127.0.0.1:8000/goods/">Goods</a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="http://127.0.0.1:8000/mybooking/">My Bookings</a>
-            </li>
-
 
             {% if request.user.is_authenticated %}
             <li class="nav-item">
+                <a class="nav-link" href="http://127.0.0.1:8000/mybooking/">My Bookings</a>
+            </li>
+            
+            <li class="nav-item">
                 <a class="nav-link" href="http://127.0.0.1:8000/logout/">Logout</a>
             </li>
+
             {% else %}
 
             <li class="nav-item">
