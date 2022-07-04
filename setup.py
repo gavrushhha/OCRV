@@ -24,7 +24,7 @@ setuptools.setup(
     ],
     python_requires=">=3.8",
     install_requires=[
-        "Django==2.2.12",
+        "Django==4.0",
         "django_debug_toolbar==3.2.4",
         # "mysqlclient",
     ],
