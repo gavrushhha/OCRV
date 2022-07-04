@@ -18,4 +18,5 @@ urlpatterns = [
     path('mybooking/',views.mybooking,name="mybooking"),
     path('booking/<id>',views.render_book,name="booking"),
     path('booking/',views.render_book_goods,name="booking_goods"),
+    path('mybooking_goods/<ticket_id>',views.mybooking_goods,name="mybooking_goods"),
 ]
