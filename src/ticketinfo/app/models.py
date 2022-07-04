@@ -141,9 +141,6 @@ class Purch_goods_services(Id):
         related_name="gs",
     )
 
-    # def __str__(self):
-    #     return self.sex
-
     class Meta:
         # constraints = [models.UniqueConstraint(fields=["name"], name="unique_train")]
         db_table = "purch_goods_services"
