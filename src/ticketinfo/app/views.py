@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
-from .models import Routes, Goods_and_services, Passengers
+from .models import Routes, Goods_and_services, Passengers, Purch_tickets, Purch_goods_services
 from dotenv import load_dotenv
 from datetime import datetime, timedelta
 
@@ -119,8 +119,7 @@ def render_profile(request):
 
 
 def profile(request):
-        username = request.POST['username']
-        pas_id = User.objects.get(username=username).id
+        pas_id = User.objects.get(username=request.user.username).id
         age = request.POST['age']
         sex = request.POST['sex']
         marit_status = request.POST['marit_status']
@@ -177,15 +176,39 @@ def logout(request):
 
 
 def mybooking(request):
-    try:
-        if request.user.is_authenticated:
-            person = User.objects.get(username=request.user.username).id
-            info = Passengers.objects.filter(id=person)
-            return render(request, './mybooking.html', {'ticket': ticket})
-        else:
-            return render(request, './error.html', {'msg': "User not authenticated"})
-    except:
-        return render(request, './error.html', {'msg': "Error"})
+    person = User.objects.get(username=request.user.username).id
+    tickets = Purch_tickets.objects.filter(passengers=person)
+    return render(request, './mybooking.html', {'tickets': tickets})
+
+
+def mybooking_goods(request, ticket_id):
+    stmt = (
+        "SELECT id, name, gs_id, price, COUNT(gs_id) AS cnt\n"
+        "FROM (\n"
+        "    SELECT purch_goods_services.id, name, gs_id, price FROM purch_goods_services\n"
+        "    JOIN recsys.goods_and_services\n"
+        "    ON goods_and_services.id = purch_goods_services.gs_id\n"
+        f"    WHERE recsys.purch_goods_services.ticket_id = {ticket_id}\n"
+        ") AS mtbl\n"
+        "GROUP BY mtbl.gs_id\n"
+    )
+    result = Purch_goods_services.objects.raw(stmt)
+
+    ticket = Purch_tickets.objects.get(id=ticket_id)
+    all_price = 0
+
+    for i in result:
+        all_price += i.price * i.cnt
+        
+    all_price += ticket.price
+    print(all_price)
+    
+    """
+    По результатам можно итерироваться. Доступные колонки - ['id', 'name', 'gs_id', 'price', 'cnt']
+    из которых нужны только name, price, cnt (число)
+    """
+ 
+    return render(request, './mybooking_goods.html', {'result': result, 'all_price': all_price})
 
 
 def render_book(request, id):
@@ -200,4 +223,3 @@ def render_book_goods(request):
         'msg': "This function is disabled"
     }
     return render(request, './error.html', context)
-
