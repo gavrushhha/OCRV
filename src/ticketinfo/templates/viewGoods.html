@@ -1,0 +1,29 @@
+{% extends "./base.html" %}
+
+{% block content %}
+
+<div style="margin-top: 50px;">
+    <center><h2> Доступные товары/услуги </h2></center>
+
+    <table class="table table-striped" style="width: 90%;margin-left:75px ;margin-top: 30px;">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Название</th>
+                <th scope="col">Цена</th>
+                <th scope="col">Купить</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for i in find_goods%}
+
+            <tr>
+                <td>{{i.name}}</td>
+                <td>{{i.price}}</td>
+                <td><a href="http://127.0.0.1:8000/booking/{{i.pk}}"><button class='btn btn-success'>Купить</button></a></td>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

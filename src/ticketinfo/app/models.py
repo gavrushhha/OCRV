@@ -16,6 +16,8 @@ class Routes(Id):
     route_time = models.IntegerField(_("route_time"), blank=True)
     end = models.CharField(_("end"), max_length=255)
 
+    # route_time = str(timedelta(seconds=1000000))
+
     def __str__(self):
         return self.start + " - " + self.end
 
@@ -99,7 +101,7 @@ class Passengers(Id):
 
 
 class Purch_tickets(Id):
-    type_wagon = models.CharField(_("sex"), max_length=255)
+    type_wagon = models.CharField(_("type_wagon"), max_length=255)
     num_wagon = models.IntegerField(_("num_wagon"), blank=True)
     num_seat = models.IntegerField(_("num_seat"), blank=True)
     train = models.ForeignKey(
@@ -138,9 +140,6 @@ class Purch_goods_services(Id):
         on_delete=models.CASCADE,
         related_name="gs",
     )
-
-    # def __str__(self):
-    #     return self.sex
 
     class Meta:
         # constraints = [models.UniqueConstraint(fields=["name"], name="unique_train")]

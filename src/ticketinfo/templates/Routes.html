@@ -1,0 +1,36 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+<div class="container" style="display: flex;align-items: center;justify-content: center;margin-top: 50px;">
+    <div class='jumbotron' style='width: 100%; '>
+
+        <center>
+            <div style="margin-bottom: 40px;">
+                <h1>Введите город отправления</h1>
+            </div>
+        </center>
+
+        <form method='POST' action='http://127.0.0.1:8000/viewRoutes/'>
+            {% csrf_token %}
+
+            <div class="form-group row">
+                <label class='form-label col-sm-2' for="name">Город отправления</label>
+                <div class='col-sm-10'>
+
+                    <select class="form-control" id="start" name="start">
+                        {% for t in departure %}
+                        <option value={{t}}>{{t}}</option>
+                        {% endfor %}
+                    </select>
+
+                </div>
+
+            </div>
+
+            <center><input type="submit" class="btn btn-success" value='Найти'></center>
+
+        </form>
+    </div>
+</div>
+{% endblock %}
