@@ -12,14 +12,14 @@
             <div class="form-group row">
                 <label class='col-6 col-sm-3' for="name">Возраст</label>
                 <div class='col-6 col-sm-9'>
-                    <input type="integer" class="form-control" id="age" placeholder='Enter the Age' name="age">
+                    <input type="number" step="1" min="1" max="100" value="18" id="age" name="age" style="width: 350px; height: 30px;"/>
                 </div>
             </div>
 
 
             <div class="form-group row">
                 <label class='col-6 col-sm-3' for="name">Пол</label>
-                <select class="col-6 col-sm-9" id="sex" name="sex">
+                <select class="col-6 col-sm-9" id="sex" name="sex"> 
                     <option value="М">М</option>
                     <option value="Ж">Ж</option>
                 </select>
