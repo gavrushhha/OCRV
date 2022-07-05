@@ -1,5 +1,5 @@
 {% extends "./base.html" %}
-
+{% load utils %}
 {% block content %}
 
 <div style="margin-top: 50px;">
@@ -19,11 +19,11 @@
             {%for i in info%}
 
             <tr>
-                <td>{{i.age}}</td>
-                <td>{{i.sex}}</td>
-                <td>{{i.marit_status}}</td>
-                <td>{{i.education}}</td>
-                <td>{{i.childs}}</td>
+                <td>{{i.age|null_replace}}</td>
+                <td>{{i.sex|null_replace}}</td>
+                <td>{{i.marit_status|null_replace}}</td>
+                <td>{{i.education|null_replace}}</td>
+                <td>{{i.childs|null_replace}}</td>
             </tr>
 
             {% endfor %}
