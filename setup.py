@@ -26,7 +26,7 @@ setuptools.setup(
     install_requires=[
         "Django==4.0",
         "django_debug_toolbar==3.2.4",
-        # "mysqlclient",
+        "mysqlclient",
     ],
     extras_require={
         "dev": [
@@ -37,6 +37,7 @@ setuptools.setup(
         "tests": [
             "pytest",
             "pytest-dotenv",
+            "pytest-django"
         ],
     },
 )
