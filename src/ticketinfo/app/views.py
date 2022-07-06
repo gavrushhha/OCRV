@@ -1,5 +1,6 @@
 from django.core.handlers.wsgi import WSGIRequest
 from django.utils.datastructures import MultiValueDictKeyError
+from django.db import IntegrityError
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -161,6 +162,8 @@ def register(request: WSGIRequest) -> HttpResponse:
 
     except MultiValueDictKeyError:
         context = {"msg": "Error"}
+    except IntegrityError:
+        context = {"msg": "Please enter a different name"}
 
     return render(request, "./error.html", context)
 
@@ -243,6 +246,10 @@ def mybooking(request: WSGIRequest) -> HttpResponse:
     try:
         person = User.objects.get(username=request.user.username).id
         tickets = Purch_tickets.objects.filter(passengers=person)
+        if tickets.count() == 0:
+            context = {"msg": "No items"}
+            return render(request, "./error.html", context)
+
         return render(request, "./mybooking.html", {"tickets": tickets})
 
     except ObjectDoesNotExist:
