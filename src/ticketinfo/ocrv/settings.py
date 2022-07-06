@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import dotenv
+import sys
 from pathlib import Path
 
 dotenv.load_dotenv()
@@ -76,6 +77,7 @@ WSGI_APPLICATION = "ticketinfo.ocrv.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
@@ -86,6 +88,21 @@ DATABASES = {
         "PORT": os.environ.get("PORT"),
     }
 }
+
+check_test = False
+
+for arg in sys.argv:
+    if "test" in arg:
+        check_test = True
+
+if check_test:
+    DATABASES["default"] = {
+        "ENGINE": "django.db.backends.mysql",
+        "HOST": "localhost",
+        "PORT": "3306",
+        "USER": "root",
+        "PASSWORD": "root",
+    }
 
 
 # Password validation
