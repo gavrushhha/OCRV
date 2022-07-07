@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 import dotenv
 import sys
-from pathlib import Path
 
 dotenv.load_dotenv()
 
