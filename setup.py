@@ -27,6 +27,7 @@ setuptools.setup(
         "Django==4.0",
         "django_debug_toolbar==3.2.4",
         "mysqlclient",
+        "python-dotenv",
     ],
     extras_require={
         "dev": [
@@ -34,10 +35,6 @@ setuptools.setup(
             "black",
             "flake8-annotations",
         ],
-        "tests": [
-            "pytest",
-            "pytest-dotenv",
-            "pytest-django"
-        ],
+        "tests": ["pytest", "pytest-dotenv", "pytest-django"],
     },
 )
